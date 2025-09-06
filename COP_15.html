@@ -5,54 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jogo da Memória - Biodiversidade Animal</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Baloo 2', cursive;
       background: linear-gradient(to right, #2e8b57, #228b22);
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       margin: 0;
+      padding: 20px;
     }
     h1 {
       margin-bottom: 10px;
       text-align: center;
+      font-size: 32px;
     }
     p {
       margin-bottom: 20px;
-      max-width: 800px;
+      max-width: 700px;
       text-align: center;
       font-size: 18px;
     }
-    .controls {
+    .scoreboard {
       margin-bottom: 20px;
       display: flex;
       gap: 20px;
-      align-items: center;
-    }
-    button {
-      background: #fff;
-      color: #2e8b57;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #e0e0e0;
-    }
-    .stats {
-      font-size: 16px;
+      font-size: 20px;
     }
     .game-board {
       display: grid;
       grid-template-columns: repeat(4, 200px);
-      gap: 20px;
-      justify-content: center;
+      gap: 30px;
+      margin-bottom: 60px;
     }
     .card {
       width: 200px;
@@ -75,9 +63,8 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      border-radius: 12px;
+      border-radius: 10px;
       backface-visibility: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
     .card-front {
       background: #fff;
@@ -85,7 +72,7 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 22px;
       color: #2e8b57;
     }
     .card-back {
@@ -96,20 +83,30 @@
       justify-content: flex-start;
       flex-direction: column;
       padding: 10px;
-      font-size: 14px;
+      font-size: 15px;
       color: #000;
       overflow-y: auto;
     }
     .card-back img {
-      width: 120px;
-      height: 120px;
+      width: 160px;
+      height: 160px;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 8px;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
-    .card-back p {
-      font-size: 13px;
-      text-align: justify;
+    button {
+      margin-top: 20px;
+      padding: 14px 28px;
+      font-size: 18px;
+      background-color: #fff;
+      color: #2e8b57;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Baloo 2', cursive;
+    }
+    button:hover {
+      background-color: #f0f0f0;
     }
   </style>
 </head>
@@ -117,14 +114,14 @@
   <h1>Jogo da Memória - Biodiversidade Animal 🌍</h1>
   <p>Descubra os pares de animais e aprenda mais sobre sua importância na biodiversidade, em homenagem à COP-15 de 2026.</p>
 
-  <div class="controls">
-    <button onclick="resetGame()">🔄 Reiniciar Partida</button>
-    <div class="stats">
-      ⏱️ Tempo: <span id="time">0</span>s | 🎯 Tentativas: <span id="attempts">0</span>
-    </div>
+  <div class="scoreboard">
+    <div>Tentativas: <span id="attempts">0</span></div>
+    <div>Tempo: <span id="timer">0</span>s</div>
   </div>
 
   <div class="game-board" id="gameBoard"></div>
+
+  <button onclick="restartGame()">🔄 Reiniciar Jogo</button>
 
   <script>
     const animals = [
@@ -138,8 +135,12 @@
     let flippedCards = [];
     let lockBoard = false;
     let attempts = 0;
-    let time = 0;
-    let timerInterval;
+    let timer = 0;
+    let interval;
+
+    const gameBoard = document.getElementById("gameBoard");
+    const attemptsDisplay = document.getElementById("attempts");
+    const timerDisplay = document.getElementById("timer");
 
     function createCard(animal) {
       const card = document.createElement("div");
@@ -149,7 +150,7 @@
           <div class="card-front">COP-15</div>
           <div class="card-back">
             <img src="${animal.img}" alt="${animal.name}">
-            <span><strong>${animal.name}</strong></span>
+            <span>${animal.name}</span>
           </div>
         </div>
       `;
@@ -165,7 +166,7 @@
 
       if (flippedCards.length === 2) {
         attempts++;
-        document.getElementById("attempts").textContent = attempts;
+        attemptsDisplay.textContent = attempts;
         checkMatch();
       }
     }
@@ -190,36 +191,31 @@
 
     function initGame() {
       gameBoard.innerHTML = "";
-      flippedCards = [];
-      lockBoard = false;
       attempts = 0;
-      time = 0;
-      clearInterval(timerInterval);
-      document.getElementById("attempts").textContent = attempts;
-      document.getElementById("time").textContent = time;
-      startTimer();
+      timer = 0;
+      attemptsDisplay.textContent = attempts;
+      timerDisplay.textContent = timer;
+      clearInterval(interval);
+      interval = setInterval(() => {
+        timer++;
+        timerDisplay.textContent = timer;
+      }, 1000);
 
       cards = [...animals, ...animals];
       cards.sort(() => 0.5 - Math.random());
+
       cards.forEach(animal => {
         const cardElement = createCard(animal);
         gameBoard.appendChild(cardElement);
       });
     }
 
-    function resetGame() {
+    function restartGame() {
       initGame();
     }
 
-    function startTimer() {
-      timerInterval = setInterval(() => {
-        time++;
-        document.getElementById("time").textContent = time;
-      }, 1000);
-    }
-
-    const gameBoard = document.getElementById("gameBoard");
     initGame();
   </script>
 </body>
 </html>
+
