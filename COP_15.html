@@ -9,7 +9,8 @@
 
     body {
       font-family: 'Baloo 2', cursive;
-      background: linear-gradient(to right, #2e8b57, #228b22);
+      background: url('https://upload.wikimedia.org/wikipedia/commons/6/62/Pantanal%2C_Mato_Grosso%2C_Brasil.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -22,19 +23,22 @@
     h1 {
       margin-bottom: 10px;
       text-align: center;
-      font-size: 32px;
+      font-size: 42px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
     }
     p {
       margin-bottom: 20px;
       max-width: 700px;
       text-align: center;
-      font-size: 18px;
+      font-size: 24px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
     }
     .scoreboard {
       margin-bottom: 20px;
       display: flex;
       gap: 20px;
-      font-size: 20px;
+      font-size: 21px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
     }
     .game-board {
       display: grid;
@@ -95,7 +99,7 @@
       margin-bottom: 10px;
     }
     button {
-      margin-top: 20px;
+      margin-top: 10px;
       padding: 14px 28px;
       font-size: 18px;
       background-color: #fff;
@@ -112,7 +116,7 @@
 </head>
 <body>
   <h1>Jogo da Memória - Biodiversidade Animal 🌍</h1>
-  <p>Descubra os pares de animais e aprenda mais sobre sua importância na biodiversidade, em homenagem à COP-15 de 2026.</p>
+  <p>Descubra os pares de animais e aprenda mais sobre as aves migratórias do bioma Pantanal, em homenagem à COP-15 de 2026.</p>
 
   <div class="scoreboard">
     <div>Tentativas: <span id="attempts">0</span></div>
