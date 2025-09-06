@@ -177,6 +177,13 @@
         setTimeout(() => {
           card1.querySelector(".card-back").innerHTML += `<p>${animals.find(a => a.name === card1.dataset.name).desc}</p>`;
           card2.querySelector(".card-back").innerHTML += `<p>${animals.find(a => a.name === card2.dataset.name).desc}</p>`;
+
+          if (document.querySelectorAll(".flipped").length === cards.length) {
+            setTimeout(() => {
+              alert("🎉 Parabéns! Você encontrou todos os pares! O jogo será reiniciado.");
+              restartGame();
+            }, 500);
+          }
         }, 300);
       } else {
         lockBoard = true;
@@ -218,4 +225,3 @@
   </script>
 </body>
 </html>
-
