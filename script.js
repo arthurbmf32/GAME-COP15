@@ -2,22 +2,26 @@ const animals = [
   { 
     name: "Gavião-tesoura", 
     img: "https://upload.wikimedia.org/wikipedia/commons/5/53/Elanoides_forficatus_Monteverde_06.jpg", 
-    desc: "Realizam migração sazonal anual, partindo da região amazônica no inverno para o sul e sudeste do Brasil e até a Argentina. Após a reprodução, retornam para a Amazônia." 
+    desc: "Realizam migração sazonal anual, partindo da região amazônica no inverno para o sul e sudeste do Brasil e até a Argentina. Após a reprodução, retornam para a Amazônia.",
+    url: "https://pt.wikipedia.org/wiki/Elanoides_forficatus"
   },
   { 
     name: "Marreca-caneleira", 
     img: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Fulvous_whistling_duck_or_fulvous_tree_duck_%28Dendrocygna_bicolor%29.jpg", 
-    desc: "Ave sazonal no Pantanal: diminui drasticamente durante a seca e retorna quando as cheias chegam, movendo-se em busca de áreas alagadas com alimento." 
+    desc: "Ave sazonal no Pantanal: diminui drasticamente durante a seca e retorna quando as cheias chegam, movendo-se em busca de áreas alagadas com alimento.",
+    url: "https://pt.wikipedia.org/wiki/Dendrocygna_bicolor"
   },
   { 
     name: "Águia-pescadora", 
-    img: "https://upload.wikimedia.org/wikipedia/commons/8/87/African_fish_eagle_%28Haliaeetus_vocifer%29_Ethiopia.jpg", 
-    desc: "Migratória, reproduz-se na América do Norte e migra para regiões mais quentes da América do Sul quando falta alimento." 
+    img: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Pandion_haliaetus_%28Osprey%29.jpg", 
+    desc: "Migratória, reproduz-se na América do Norte e migra para regiões mais quentes da América do Sul quando falta alimento.",
+    url: "https://pt.wikipedia.org/wiki/Pandion_haliaetus"
   },
   { 
     name: "Talha-mar", 
     img: "https://upload.wikimedia.org/wikipedia/commons/e/ed/Black_Skimmer_JG.jpg", 
-    desc: "A espécie Rynchops niger realiza migrações entre América do Norte e do Sul, cruzando os Andes para reprodução e alimentação." 
+    desc: "A espécie Rynchops niger realiza migrações entre América do Norte e do Sul, cruzando os Andes para reprodução e alimentação.",
+    url: "https://pt.wikipedia.org/wiki/Rynchops_niger"
   }
 ];
 
@@ -65,12 +69,13 @@ function checkMatch() {
   const [card1, card2] = flippedCards;
   if (card1.dataset.name === card2.dataset.name) {
     setTimeout(() => {
-      const desc = animals.find(a => a.name === card1.dataset.name).desc;
-      card1.querySelector(".card-back").innerHTML += `<p>${desc}</p>`;
-      card2.querySelector(".card-back").innerHTML += `<p>${desc}</p>`;
+      const animal = animals.find(a => a.name === card1.dataset.name);
+      const descHtml = `<p>${animal.desc} <a href='${animal.url}' target='_blank'>Saiba mais</a></p>`;
+      card1.querySelector(".card-back").innerHTML += descHtml;
+      card2.querySelector(".card-back").innerHTML += descHtml;
 
       if (document.querySelectorAll(".flipped").length === cards.length) {
-        setTimeout(() => {;
+        setTimeout(() => {
           alert("🎉 Parabéns! Você encontrou todos os pares! O jogo será reiniciado.")
           restartGame();
         }, 3000);
