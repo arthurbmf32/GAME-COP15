@@ -6,20 +6,57 @@
   <link rel="stylesheet" href="style.css">
   <title>Jogo da Memória - Biodiversidade Animal</title>
 </head>
-<body>
-  <h1>Jogo da Memória - Biodiversidade Animal 🌍</h1>
-  <p>Descubra os pares de animais e aprenda mais sobre as aves migratórias do bioma Pantanal, em homenagem à COP-15 de 2026.</p>
 
-  <div class="scoreboard">
-    <div>Tentativas: <span id="attempts">0</span></div>
-    <div>Tempo: <span id="timer">0</span>s</div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Memória - Biodiversidade Animal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <a href="https://www.ufms.br/" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Logo-UFMS.jpg" alt="Logo da UFMS" class="logo-corner" id="logo-left">
+  </a>
+  <div class="header-text">
+    <h1>Jogo da Memória - Biodiversidade Animal 🌍</h1>
+    <p>Descubra os pares de animais e aprenda mais sobre as aves migratórias do bioma Pantanal, em homenagem à próxima Conferência da Biodiversidade da ONU.</p>
+  </div>
+  <a href="https://www.cms.int/" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Convention_on_Migratory_Species_Logo.svg/860px-Convention_on_Migratory_Species_Logo.svg.png" alt="Logo da Convenção sobre Espécies Migratórias" class="logo-corner" id="logo-right">
+  </a>
+</header>
+
+  <main>
+    <div class="scoreboard">
+      <div>Tentativas: <span id="attempts">0</span></div>
+      <div>Tempo: <span id="timer">0</span>s</div>
+    </div>
+    <div class="game-board" id="gameBoard"></div>
+    <button onclick="restartGame()">🔄 Reiniciar Jogo</button>
+  </main>
+  
+  <footer>
+  <div class="footer-item" id="footer-left">
+    <a href="https://www.ufms.br/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Logo-UFMS.jpg" alt="Logo da UFMS" class="logo-footer">
+    </a>
+    <span>Universidade Federal do Mato Grosso do Sul</span>
   </div>
 
-  <div class="game-board" id="gameBoard"></div>
+  <div class="footer-item" id="footer-right">
+    <a href="https://www.cms.int/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Convention_on_Migratory_Species_Logo.svg/860px-Convention_on_Migratory_Species_Logo.svg.png" alt="Logo da Convenção sobre Espécies Migratórias" class="logo-footer">
+    </a>
+    <span>Convenção Sobre a Conservação das Espécies Migratórias Pertencentes à Fauna Selvagem </span>
+  </div>
+  </footer>
 
-  <button onclick="restartGame()">🔄 Reiniciar Jogo</button>
-
-  <!-- Script externo -->
   <script src="script.js"></script>
 </body>
+</html>
+
 </html>

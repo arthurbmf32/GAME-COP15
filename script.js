@@ -74,9 +74,10 @@ function checkMatch() {
       card1.querySelector(".card-back").innerHTML += descHtml;
       card2.querySelector(".card-back").innerHTML += descHtml;
 
-      if (document.querySelectorAll(".flipped").length === cards.length) {
+      if (document.querySelectorAll(".flipped").length === (animals.length * 2)) {
+        clearInterval(interval);
         setTimeout(() => {
-          alert("🎉 Parabéns! Você encontrou todos os pares! O jogo será reiniciado.")
+          alert("🎉 Parabéns! Você encontrou todos os pares! O jogo será reiniciado.");
           restartGame();
         }, 3000);
       }
@@ -94,6 +95,8 @@ function checkMatch() {
 
 function initGame() {
   gameBoard.innerHTML = "";
+  flippedCards = [];
+  lockBoard = false;
   attempts = 0;
   timer = 0;
   attemptsDisplay.textContent = attempts;
