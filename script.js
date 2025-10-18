@@ -68,20 +68,33 @@ function flipCard() {
 function checkMatch() {
   const [card1, card2] = flippedCards;
   if (card1.dataset.name === card2.dataset.name) {
+    // Adiciona a classe .matched ao elemento .card (o pai)
+    card1.classList.add("matched");
+    card2.classList.add("matched");
+
     setTimeout(() => {
       const animal = animals.find(a => a.name === card1.dataset.name);
-      const descHtml = `<p>${animal.desc} <a href='${animal.url}' target='_blank'>Saiba mais</a></p>`;
-      card1.querySelector(".card-back").innerHTML += descHtml;
-      card2.querySelector(".card-back").innerHTML += descHtml;
+      
+      const infoHtml = `
+        <div class="card-info-header">
+          <img src="${animal.img}" alt="${animal.name}">
+          <h4>${animal.name}</h4>
+        </div>
+        <p>${animal.desc} <a href='${animal.url}' target='_blank'>Saiba mais</a></p>
+      `;
 
-      if (document.querySelectorAll(".flipped").length === (animals.length * 2)) {
+      card1.querySelector(".card-back").innerHTML = infoHtml;
+      card2.querySelector(".card-back").innerHTML = infoHtml;
+
+      if (document.querySelectorAll(".matched").length === (animals.length * 2)) {
         clearInterval(interval);
         setTimeout(() => {
           alert("🎉 Parabéns! Você encontrou todos os pares! O jogo será reiniciado.");
           restartGame();
-        }, 3000);
+        }, 4000); 
       }
-    }, 300);
+    }, 400); 
+  
   } else {
     lockBoard = true;
     setTimeout(() => {

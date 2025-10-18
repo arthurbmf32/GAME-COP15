@@ -1,26 +1,26 @@
-/* --- ESTILO GLOBAL E LAYOUT DE TELA CHEIA --- */
+/* --- ESTILO GLOBAL E LAYOUT RESPONSIVO (VERSÃO DEFINITIVA) --- */
 * {
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%; /* Força a altura total da tela */
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* DESATIVA A BARRA DE ROLAGEM */
-  font-family: Arial, sans-serif;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
+  margin: 0;
+  font-family: Arial, sans-serif;
   background-color: #1c2833;
   color: #f9f9f9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Encontre esta regra e altere a altura */
+/* --- CABEÇALHO --- */
 header {
-  height: 15vh; /* ANTES: 25vh */
+  width: 100%;
+  padding: 20px;
   position: relative;
   display: flex;
   align-items: center;
@@ -32,85 +32,67 @@ header {
   background-size: cover;
 }
 
-/* Diminua a altura das logos */
 .logo-corner {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  height: 6vh; /* ANTES: 8vh */
-  max-height: 50px; /* Limite reduzido */
+  height: clamp(40px, 8vh, 60px);
   background: rgba(255, 255, 255, 0.8);
   padding: 5px;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-#logo-left {
-  left: 20px;
-}
-
-#logo-right {
-  right: 20px;
-}
+#logo-left { left: 20px; }
+#logo-right { right: 20px; }
 
 .header-text {
   max-width: 800px;
-  padding: 0 20px;
+  padding: 0 clamp(10px, 5vw, 40px);
   text-align: center;
 }
 
-/* Diminua o tamanho do título */
 header h1 {
-  font-size: 3vmin; /* ANTES: 3.5vmin */
-  margin-top: 0;
-  margin-bottom: 5px;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  margin: 0 0 5px 0;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
-/* Diminua o tamanho do parágrafo */
 header p {
-  font-size: 1.8vmin; /* ANTES: 2vmin */
-  margin-top: 0;
-  margin-bottom: 0;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  margin: 0;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-} 
+}
 
 
-/* Encontre esta regra e altere a altura */
+/* --- SEÇÃO PRINCIPAL (JOGO) --- */
 main {
-  height: 75vh; /* ANTES: 65vh */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 1vh 2vw;
+  padding: clamp(20px, 5vh, 40px) 20px;
   background: 
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('https://i.postimg.cc/gJQ7NsxL/CMSCOP15-meeting-image-0.png') no-repeat center center fixed;
   background-size: cover;
-  overflow: hidden;
 }
 
 .scoreboard {
   display: flex;
   gap: 20px;
-  margin-bottom: 2vh; /* Margem relativa */
-  font-size: 2vmin;
+  margin-bottom: 30px;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   background: rgba(44, 62, 80, 0.85);
-  padding: 1vh 2vw;
+  padding: 10px 24px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
-/* Encontre esta regra e altere a max-height */
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5vmin;
+  gap: clamp(10px, 2vw, 20px);
   width: 100%;
-  height: 100%;
-  max-width: 700px; 
-  max-height: 60vh; /* ANTES: 45vh */
+  max-width: 900px; 
 }
 
 .card {
@@ -119,85 +101,190 @@ main {
   cursor: pointer;
 }
 
-/* ... (as regras de .card-inner, .card.flipped, .card-back etc. não precisam mudar) ... */
-.card-inner,.card.flipped .card-inner,.card-front,.card-back,.card-back p,.card-back img,.card-back a,.card-back a:hover{position:relative;width:100%;height:100%;text-align:center;transition:transform .6s;transform-style:preserve-3d}.card.flipped .card-inner{transform:rotateY(180deg)}.card-front,.card-back{position:absolute;border-radius:12px;backface-visibility:hidden;box-shadow:0 6px 18px rgba(0,0,0,.3)}.card-front{background:url(https://i.postimg.cc/gJQ7NsxL/CMSCOP15-meeting-image-0.png) no-repeat center center;background-size:cover;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;color:#fff;letter-spacing:1px;border:2px solid #2e8b57;text-shadow:2px 2px 5px rgba(0,0,0,.7)}.card-back{background:#fff;transform:rotateY(180deg);display:flex;align-items:center;justify-content:flex-start;flex-direction:column;padding:10px;font-size:15px;color:#222;overflow-y:auto;border:2px solid #2e8b57}.card-back p{color:#222;background:#f4f4f4;padding:6px 8px;border-radius:8px;margin:8px 0 0;font-size:12px;box-shadow:0 2px 8px rgba(0,0,0,.07)}.card-back img{width:90%;height:auto;max-height:100px;object-fit:cover;border-radius:10px;margin-bottom:8px}.card-back a{color:#1abc9c;text-decoration:none;font-weight:700;padding:2px 6px;border-radius:6px;transition:background .2s,color .2s}.card-back a:hover{background:#1abc9c;color:#fff}
+/* --- ESTILOS DAS CARTAS (VERSÃO CORRIGIDA E FINAL) --- */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+.card-front {
+  background: url('https://i.postimg.cc/gJQ7NsxL/CMSCOP15-meeting-image-0.png') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  color: #fff;
+  border: 2px solid #2e8b57;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+  text-align: center;
+}
+
+/* ESTILO BASE DO VERSO DA CARTA (PARA O ESTADO INICIAL) */
+.card-back {
+  background: #fff;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centraliza a imagem e nome iniciais */
+  padding: 10px;
+  color: #222;
+  border: 2px solid #2e8b57;
+  overflow: hidden;
+}
+
+.card-back > img {
+  width: 90%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card-back > span {
+  font-weight: bold;
+  font-size: clamp(14px, 4vw, 18px);
+  text-align: center;
+}
+
+/* ESTILO PARA O ESTADO DE PAR ENCONTRADO (.matched) */
+.card.matched .card-back {
+  justify-content: flex-start; /* Alinha a ficha de info ao topo */
+  align-items: stretch; /* Faz os itens internos ocuparem a largura toda */
+  padding: 15px;
+  text-align: left;
+}
+
+/* Substitua as regras de .card-info-header, img e h4 por estas */
+
+.card-info-header {
+  display: flex;
+  flex-direction: column; /* MUDANÇA: Empilha os itens (imagem em cima, nome embaixo) */
+  align-items: center;   /* Centraliza horizontalmente a imagem e o nome */
+  gap: 5px;                /* Espaçamento entre a imagem e o nome */
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.card-info-header img {
+  width: 80px;  /* AUMENTADO: Imagem um pouco maior */
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.card-info-header h4 {
+  font-size: clamp(15px, 3.5vw, 17px);
+  margin: 0;
+  color: #2c3e50;
+  word-wrap: break-word;
+  min-width: 0;
+  text-align: center; /* Garante que o nome fique centralizado */
+}
+
+.card-back p {
+  font-size: clamp(13px, 2.8vw, 14px);
+  line-height: 1.4;
+  margin: 0;
+  color: #34495e;
+  width: 100%;
+  flex-grow: 1; /* Ocupa o espaço restante */
+  overflow-y: auto; /* Adiciona scroll SÓ no parágrafo se necessário */
+}
+
+.card-back a {
+  color: #1abc9c;
+  font-weight: bold;
+}
 
 
+/* --- BOTÃO --- */
 button {
-  padding: 1.5vh 3vw;
-  font-size: 2vmin;
+  padding: 12px 24px;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   background: linear-gradient(90deg, #2e8b57 60%, #1abc9c 100%);
   color: #fff;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-  margin-top: 2vh;
+  margin-top: 30px;
   font-weight: bold;
-  letter-spacing: 1px;
 }
 
-/* --- RODAPÉ COM CONTEÚDO CENTRALIZADO --- */
+
+/* --- RODAPÉ --- */
 footer {
-  height: 10vh;
-  min-height: 80px;
+  padding: 20px;
   display: flex;
-  justify-content: center; /* CENTRALIZA OS ITENS COMO UM GRUPO */
+  justify-content: center;
   align-items: center;
-  gap: 50px; /* Define o espaço ENTRE os dois itens */
-  width: 100%;
-  padding: 0 20px; /* Adiciona um respiro nas laterais em telas pequenas */
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
+  gap: clamp(20px, 4vw, 50px);
+  flex-wrap: wrap;
   background: 
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('https://www.embrapa.br/documents/1354999/1529095/pantanal_banner.jpg/6bb627ca-e0a8-454c-900e-d5c62e5bb8b2?t=1407357516458') no-repeat center center;
   background-size: cover;
 }
 
-/* O item do rodapé volta a ser um elemento de fluxo normal */
 .footer-item {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-/* As logos e textos continuam com o mesmo estilo */
 .logo-footer {
-  height: 5vh;
-  max-height: 40px;
+  height: 40px;
   background: rgba(255, 255, 255, 0.8);
   padding: 5px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .footer-item span {
-  color: #f9f9f9;
-  font-size: 1.8vmin;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
   font-weight: bold;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
-/* As regras de ID para posicionamento nos cantos NÃO SÃO MAIS NECESSÁRIAS.
-   Se você as tiver no seu código, pode removê-las (#footer-left e #footer-right). */
 
-/* --- CÓDIGO DE RESPONSIVIDADE (Ajustes finos) --- */
-@media (max-width: 900px) and (orientation: landscape) {
-    .game-board {
-        max-height: 55vh;
-    }
+/* --- CÓDIGO DE RESPONSIVIDADE (MUDANÇAS ESTRUTURAIS) --- */
+@media (max-width: 900px) {
+  .game-board {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-
 @media (max-width: 600px) {
-  .header-text { padding: 0 5px; }
-  header h1 { font-size: 4vmin; }
-  header p { display: none; } /* Esconde o parágrafo para economizar espaço */
+  #logo-left, #logo-right {
+    display: none;
+  }
   
   .game-board {
-    grid-template-columns: repeat(4, 1fr); /* Mantém 4 colunas se couber */
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .logo-corner, .footer-item span { display: none; } /* Esconde logos e textos para simplificar */
-  footer { min-height: 50px; }
+  footer {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
 }
