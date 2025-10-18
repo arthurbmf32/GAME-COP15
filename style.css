@@ -273,11 +273,31 @@ footer {
   }
 }
 
+/* Substitua a media query para celulares por esta versão */
+
+/* Para Celulares (até 600px de largura) */
 @media (max-width: 600px) {
-  #logo-left, #logo-right {
-    display: none;
+  /* 1. AJUSTES NO CABEÇALHO PARA MANTER AS LOGOS */
+  .logo-corner {
+    height: 35px; /* Deixa as logos bem menores */
   }
-  
+  #logo-left { left: 10px; } /* Aproxima da borda */
+  #logo-right { right: 10px; }
+
+  .header-text {
+    /* Adiciona espaço nas laterais para não sobrepor as logos */
+    padding: 0 50px; 
+  }
+
+  header h1 {
+    font-size: 1.2rem; /* Reduz o tamanho do título principal */
+  }
+
+  header p {
+    display: none; /* Mantém o parágrafo escondido para economizar espaço */
+  }
+
+  /* 2. O RESTO DOS AJUSTES PARA CELULAR CONTINUA IGUAL */
   .game-board {
     grid-template-columns: repeat(2, 1fr);
   }
