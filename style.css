@@ -265,6 +265,39 @@ footer {
   text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
+/* --- ESTILO DO BOTÃO DE ÁUDIO --- */
+.audio-btn {
+    background: #1abc9c; 
+    color: white;
+    border: none;
+    border-radius: 50%; 
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 0;
+    margin-top: 5px; 
+    transition: background 0.2s;
+}
+
+.audio-btn:hover {
+    background: #16a085;
+}
+
+/* 🌟 Garante que o container da informação esteja configurado para empilhar: */
+.card-info-header {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 5px; 
+    width: 100%;
+    margin-bottom: 10px;
+}
 
 /* --- CÓDIGO DE RESPONSIVIDADE (MUDANÇAS ESTRUTURAIS) --- */
 @media (max-width: 900px) {
