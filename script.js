@@ -4,14 +4,14 @@ const animals = [
     img: "https://upload.wikimedia.org/wikipedia/commons/5/53/Elanoides_forficatus_Monteverde_06.jpg", 
     desc: "Realizam migração sazonal anual, partindo da região amazônica no inverno para o sul e sudeste do Brasil e até a Argentina. Após a reprodução, retornam para a Amazônia.",
     url: "https://pt.wikipedia.org/wiki/Elanoides_forficatus",
-    audio: "audio/gaviao_tesoura_audio.mp3" 
+    audio: "/audio/gaviao_tesoura_audio.mp3" 
   },
   { 
     name: "Marreca-caneleira", 
     img: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Fulvous_whistling_duck_or_fulvous_tree_duck_%28Dendrocygna_bicolor%29.jpg", 
     desc: "Ave sazonal no Pantanal: diminui drasticamente durante a seca e retorna quando as cheias chegam, movendo-se em busca de áreas alagadas com alimento.",
     url: "https://pt.wikipedia.org/wiki/Dendrocygna_bicolor",
-    audio: "audio/marreca_caneleira_audio.mp3"
+    audio: "/audio/marreca_caneleira_audio.mp3"
   },
   { 
     name: "Águia-pescadora", 
