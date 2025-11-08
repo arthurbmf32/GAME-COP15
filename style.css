@@ -22,24 +22,54 @@ header {
   width: 100%;
   padding: 20px;
   position: relative;
-  display: flex;
+  display: flex; /* Garante que os itens são flexíveis */
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('https://www.embrapa.br/documents/1354999/1529095/pantanal_banner.jpg/6bb627ca-e0a8-454c-900e-d5c62e5bb8b2?t=1407357516458') no-repeat center center;
-  background-size: cover;
+  background: #2c3e50; 
+  /* Adicionado para garantir espaço mínimo para as logos em todos os tamanhos */
+  min-height: 80px; 
+}
+
+.header-text {
+  max-width: 800px;
+  /* Margem lateral para não encostar nas logos */
+  padding: 0 clamp(10px, 5vw, 40px); 
+  text-align: center;
+  /* Permite que o texto encolha */
+  flex-shrink: 1; 
+  /* Adicionado para garantir que o texto não empurre as logos se for muito longo */
+  min-width: 0; 
+}
+
+header p a {
+    /* 1. Remove o sublinhado */
+    text-decoration: none; 
+    /* 2. Define a cor do texto (branco puro) */
+    color: #ffffff; 
+    /* 3. Aumenta a força visual (opcional, mas recomendado para destaque) */
+    font-weight: bold;
+    /* 4. Adiciona um efeito ao passar o mouse para manter a interatividade */
+    transition: color 0.3s;
+}
+
+/* Opcional: Adiciona um efeito ao passar o mouse */
+header p a:hover {
+    color: #429edb; /* Um tom de cinza claro para o efeito hover */
 }
 
 .logo-corner {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  height: clamp(40px, 8vh, 60px);
+  /* Usa viewport height para ser responsivo, com clamp para limites */
+  height: clamp(40px, 8vh, 60px); 
   background: rgba(255, 255, 255, 0.8);
   padding: 5px;
   border-radius: 10px;
+  /* Garante que a logo não seja espremida e tem uma largura mínima */
+  flex-shrink: 0; 
+  min-width: 40px; /* Garante que a logo tenha um tamanho mínimo */
 }
 
 #logo-left { left: 20px; }
@@ -87,6 +117,12 @@ main {
   border-radius: 12px;
 }
 
+.scoreboard span {
+    color: #1abc9c; /* Verde vibrante */
+    font-size: 1.2em; /* Um pouco maior que o texto base */
+    font-weight: bold;
+}
+
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -120,11 +156,11 @@ main {
   height: 100%;
   border-radius: 12px;
   backface-visibility: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4); 
 }
 
 .card-front {
-  background: url('https://i.postimg.cc/gJQ7NsxL/CMSCOP15-meeting-image-0.png') no-repeat center center;
+   background: url('https://i.postimg.cc/gJQ7NsxL/CMSCOP15-meeting-image-0.png') no-repeat center center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -218,32 +254,179 @@ main {
 }
 
 
-/* --- BOTÃO --- */
+/* Ajusta as regras do botão principal */
 button {
-  padding: 12px 24px;
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  background: linear-gradient(90deg, #2e8b57 60%, #1abc9c 100%);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 30px;
-  font-weight: bold;
+    /* Remove a margem superior daqui, pois agora está no .game-controls */
+    margin-top: 2%; 
+    padding: 12px 24px;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    background: linear-gradient(90deg, #2e8b57 60%, #1abc9c 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
+/* --- NOVA SEÇÃO DE INFORMAÇÃO (Antes do Rodapé) --- */
+.info-section {
+    width: 100%;
+    max-width: 900px;
+    padding: 30px 20px;
+    text-align: center;
+    /* Linha MODIFICADA para centralizar horizontalmente */
+    margin: 30px auto 2.3% auto; 
+    /* Explicação: 30px na margem superior, auto nas laterais (centraliza), 0 na margem inferior. */
+    
+    background-color: rgba(44, 62, 80, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.info-cop h3 {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: #1abc9c;
+    margin-top: 0;
+}
+
+.info-cop p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: justify;
+    padding: 0 10px;
+}
+
+.info-cop strong {
+    color: #f9f9f9;
+}
+
+.info-cop .links-cop {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.info-cop .links-cop a {
+    color: #1abc9c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.about-button {
+    /* Reutiliza o estilo do botão de reiniciar para consistência */
+    margin-top: 20px;
+}
+
+/* --- ESTILOS DO MODAL --- */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro transparente */
+}
+
+.modal-content {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    margin: 15% auto; /* Centraliza verticalmente e horizontalmente */
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #888;
+    width: 90%; 
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+/* Animação de entrada do modal */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.modal-content h2 {
+    color: #2e8b57;
+    border-bottom: 2px solid #2e8b57;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #2c3e50;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Ajuste de responsividade para telas menores */
+/* Para Celulares (até 600px de largura) */
+@media (max-width: 600px) {
+  /* 1. AJUSTES NO CABEÇALHO PARA MANTER AS LOGOS */
+  .logo-corner {
+    height: 35px; /* Deixa as logos bem menores */
+  }
+  #logo-left { left: 10px; } /* Aproxima da borda */
+  #logo-right { right: 10px; }
+
+  .header-text {
+    /* Adiciona espaço nas laterais para não sobrepor as logos */
+    padding: 0 50px; 
+  }
+
+  header h1 {
+    font-size: 1.2rem; /* Reduz o tamanho do título principal */
+  }
+
+  header p {
+    display: none; /* ESCONDE O PARÁGRAFO INTEIRO em telas pequenas */
+  }
+
+  /* 2. O RESTO DOS AJUSTES PARA CELULAR CONTINUA IGUAL */
+  .game-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
 
 /* --- RODAPÉ --- */
 footer {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: clamp(20px, 4vw, 50px);
-  flex-wrap: wrap;
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('https://www.embrapa.br/documents/1354999/1529095/pantanal_banner.jpg/6bb627ca-e0a8-454c-900e-d5c62e5bb8b2?t=1407357516458') no-repeat center center;
-  background-size: cover;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(20px, 4vw, 50px);
+    flex-wrap: wrap;
+    /* Cor de fundo neutra e harmonizada */
+    background: #2c3e50;
 }
 
 .footer-item {
@@ -270,17 +453,17 @@ footer {
     background: #1abc9c; 
     color: white;
     border: none;
-    border-radius: 50%; 
-    width: 35px;
+    border-radius: 8px; /* Muda de círculo para retângulo arredondado */
+    width: auto;
     height: 35px;
-    font-size: 16px;
-    line-height: 1;
+    padding: 0 10px; /* Adiciona padding lateral */
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px; /* Espaço entre o ícone e o texto */
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 0;
     margin-top: 5px; 
     transition: background 0.2s;
 }

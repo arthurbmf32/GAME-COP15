@@ -4,47 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Jogo da Memória - Biodiversidade Animal</title>
+  <title>Jogo da Memória</title>
 </head>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jogo da Memória - Biodiversidade Animal</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
 
-<header>
-  <a href="https://www.ufms.br/" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Logo-UFMS.jpg" alt="Logo da UFMS" class="logo-corner" id="logo-left">
-  </a>
-  <div class="header-text">
-    <h1>Jogo da Memória - Biodiversidade Animal 🌍</h1>
-    <p>Descubra os pares de animais e aprenda mais sobre as aves migratórias do bioma Pantanal, em homenagem à próxima Conferência da Biodiversidade da ONU.</p>
-  </div>
-  <a href="https://www.cms.int/" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Convention_on_Migratory_Species_Logo.svg/860px-Convention_on_Migratory_Species_Logo.svg.png" alt="Logo da Convenção sobre Espécies Migratórias" class="logo-corner" id="logo-right">
-  </a>
-</header>
+  <header>
+    <a href="https://www.ufms.br/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Logo-UFMS.jpg" alt="Logo da UFMS" class="logo-corner" id="logo-left">
+    </a>
+    <div class="header-text">
+      <h1>Jogo da Memória - Aves Migratórias 🌍</h1>
+      <p>
+        Que tal aprender um pouco mais sobre algumas das aves que estão em extinção ou sob proteção internacional
+         ou estado de conservação desfavoráveis segundo a lista das espécies migratórias de animais silvestres 
+         incluídas nos <a href="https://www.gov.br/mma/pt-br/assuntos/biodiversidade-e-biomas/biodiversidade1/anexo-portaria-especies-migratorias_3a-edicao2025_v250120.pdf/view" target="_blank">Anexos I e II</a> da Convenção sobre a Conservação das Espécies Migratórias de Animais Silvestres?
+      </p>
+    </div>
+    <a href="https://www.cms.int/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Convention_on_Migratory_Species_Logo.svg/860px-Convention_on_Migratory_Species_Logo.svg.png" alt="Logo da Convenção sobre Espécies Migratórias" class="logo-corner" id="logo-right">
+    </a>
+  </header>
 
   <main>
     <div class="scoreboard">
       <div>Tentativas: <span id="attempts">0</span></div>
       <div>Tempo: <span id="timer">0</span>s</div>
     </div>
-    <div class="game-board" id="gameBoard"></div>
-    <button onclick="restartGame()">🔄 Reiniciar Jogo</button>
-  </main>
+    <div class="game-board" id="gameBoard"></div> 
+    <button onclick="restartGame()">🔄 Reiniciar Jogo</button> 
+ </main>
+
+  <section class="info-section">
+    <div class="info-cop">
+        <h3>O que é a COP-15?</h3>
+        <p>
+            É a 15ª Reunião da Conferência das Partes. A COP, do inglês <em>Conference of the Parties</em>, 
+            consiste de um conjunto de 133 países responsáveis pela organização da Convenção sobre a 
+            Conservação de Espécies Migratórias de Animais Silvestres (CMS). Nesta convenção são 
+            discutidos e firmados importantes tratados internacionais para a proteção de animais que migram
+            regularmente entre diferentes áreas, com o objetivo de garantir a sua sobrevivência e o 
+            equilíbrio dos ecossistemas em que vivem.
+        </p>
+        <p class="links-cop">
+            Sabia mais acessando os links: 
+            <a href="https://www.cms.int/cop15docs" target="_blank">cms.int/cop15docs</a> e 
+            <a href="https://cop15.ufms.br" target="_blank">cop15.ufms.br</a>
+        </p>
+    </div>
+    <button id="openModalBtn" class="about-button">ℹ️ Sobre o Projeto</button>
+</section>
+
+<div id="aboutModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Sobre o Desenvolvimento</h2>
+        <p>
+            Esta página foi desenvolvida como um projeto em uma disciplina de graduação dos cursos da 
+            Faculdade de Computação da UFMS, pelos acadêmicos Arthur Bastos de Mattos Ferreira Harry Borges e Lucas Vinicius
+            sob orientação da professora Luciana Montera.
+        </p>
+    </div>
+</div>
   
   <footer>
     <div class="footer-item" id="footer-left">
       <a href="https://www.ufms.br/" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Logo-UFMS.jpg" alt="Logo da UFMS" class="logo-footer">
       </a>
-      <span>Universidade Federal do Mato Grosso do Sul</span>
+      <span>Universidade Federal de Mato Grosso do Sul</span>
     </div>
 
     <div class="footer-item" id="footer-right">

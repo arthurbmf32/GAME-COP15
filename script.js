@@ -42,6 +42,28 @@ const gameBoard = document.getElementById("gameBoard");
 const attemptsDisplay = document.getElementById("attempts");
 const timerDisplay = document.getElementById("timer");
 
+// --- FUNCIONALIDADE DO MODAL ---
+const modal = document.getElementById("aboutModal");
+const btn = document.getElementById("openModalBtn");
+const span = document.getElementsByClassName("close-btn")[0];
+
+// Abre o modal ao clicar no botão
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// Fecha o modal ao clicar no (x)
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Fecha o modal ao clicar fora dele
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 function playAnimalSound(audioUrl) {
     if (currentAudio) {
         currentAudio.pause();
@@ -177,3 +199,4 @@ function restartGame() {
 }
 
 initGame();
+
