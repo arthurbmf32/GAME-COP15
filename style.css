@@ -8,27 +8,46 @@ html {
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #1c2833;
-  color: #f9f9f9;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    /* Fundo azul claro que aparecerá nas laterais e acima/abaixo do main */
+    background-color: rgb(93,183,228); 
+    color: #f9f9f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Adicionado um pequeno padding lateral para garantir a margem */
+    padding: 0 10px; 
 }
 
 /* --- CABEÇALHO --- */
 header {
-  width: 100%;
-  padding: 20px;
-  position: relative;
-  display: flex; /* Garante que os itens são flexíveis */
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  background: #2c3e50; 
-  /* Adicionado para garantir espaço mínimo para as logos em todos os tamanhos */
-  min-height: 80px; 
+   width: 100%;
+/* Remove o padding e os estilos de flexbox para transferir para o header-content */
+padding: 0;  
+position: relative;
+display: flex;
+align-items: center; 
+justify-content: center; /* Centraliza a caixa roxa horizontalmente *
+/* Mantém o fundo azul claro */
+background: rgb(93,183,228); 
+min-height: 80px; 
+}
+
+/* A caixa roxa que contém o conteúdo */
+.header-content {
+    background: rgb(63,64,150); /* A cor roxa */
+    width: 95%; 
+    max-width: 1200px; 
+    padding: 20px 20px;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; 
+    /* LINHA REMOVIDA: Retirando a box-shadow que estava causando o efeito de "caixa azul" */
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.4); */ 
+    position: relative; 
 }
 
 .header-text {
@@ -51,6 +70,7 @@ header p a {
     font-weight: bold;
     /* 4. Adiciona um efeito ao passar o mouse para manter a interatividade */
     transition: color 0.3s;
+    margin-top: 0.5%;
 }
 
 /* Opcional: Adiciona um efeito ao passar o mouse */
@@ -59,17 +79,15 @@ header p a:hover {
 }
 
 .logo-corner {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  /* Usa viewport height para ser responsivo, com clamp para limites */
-  height: clamp(40px, 8vh, 60px); 
-  background: rgba(255, 255, 255, 0.8);
-  padding: 5px;
-  border-radius: 10px;
-  /* Garante que a logo não seja espremida e tem uma largura mínima */
-  flex-shrink: 0; 
-  min-width: 40px; /* Garante que a logo tenha um tamanho mínimo */
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+height: clamp(40px, 8vh, 60px); 
+background: rgba(255, 255, 255, 0.8);
+padding: 5px;
+border-radius: 8px;
+flex-shrink: 0; 
+min-width: 40px; 
 }
 
 #logo-left { left: 20px; }
@@ -85,6 +103,7 @@ header h1 {
   font-size: clamp(1.5rem, 4vw, 2.2rem);
   margin: 0 0 5px 0;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  font-weight: 900;
 }
 
 header p {
@@ -95,16 +114,24 @@ header p {
 
 
 /* --- SEÇÃO PRINCIPAL (JOGO) --- */
+/* --- SEÇÃO PRINCIPAL (JOGO) --- */
 main {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: clamp(20px, 5vh, 40px) 20px;
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('https://i.postimg.cc/gJQ7NsxL/CMSCOP15-meeting-image-0.png') no-repeat center center fixed;
-  background-size: cover;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* MUDANÇA PRINCIPAL: Limita a largura do main (a caixa da onça) */
+    max-width: 1800px; 
+    width: 95%; /* Garante que haja margem lateral em telas grandes */
+    margin: 0 auto; /* Centraliza a caixa da onça, expondo o fundo azul claro */
+    padding: clamp(20px, 5vh, 40px) clamp(10px, 3vw, 50px);
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('https://i.postimg.cc/gJQ7NsxL/CMSCOP15-meeting-image-0.png') no-repeat center center fixed;
+    background-size: cover;
+    /* Adicionado bordas arredondadas para um visual mais suave */
+    border-radius: 12px; 
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .scoreboard {
@@ -128,6 +155,7 @@ main {
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(10px, 2vw, 20px);
   width: 100%;
+  /* Retorna ao tamanho original, garantindo que as cartas tenham bom espaço */
   max-width: 900px; 
 }
 
@@ -160,7 +188,7 @@ main {
 }
 
 .card-front {
-   background: url('https://i.postimg.cc/gJQ7NsxL/CMSCOP15-meeting-image-0.png') no-repeat center center;
+   background: url('https://i.postimg.cc/j2PJjw8Z/CMSCOP15_sem_Texto.png') no-repeat center center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -268,6 +296,21 @@ button {
     font-weight: bold;
 }
 
+/* Sobrescreve a cor de fundo do botão de Reiniciar Jogo */
+main button {
+    /* Define a mesma cor do botão "Sobre o Projeto" (azul claro) */
+    background: rgb(93,183,228); 
+    color: #fff;
+    font-weight: bold;
+    /* Mantém o efeito de sombra se estiver presente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+}
+
+/* Opcional: Adiciona o efeito hover (roxo) para o botão de Reiniciar */
+main button:hover {
+    background: rgb(63,64,150); /* Roxo */
+}
+
 /* --- NOVA SEÇÃO DE INFORMAÇÃO (Antes do Rodapé) --- */
 .info-section {
     width: 100%;
@@ -277,28 +320,48 @@ button {
     /* Linha MODIFICADA para centralizar horizontalmente */
     margin: 30px auto 2.3% auto; 
     /* Explicação: 30px na margem superior, auto nas laterais (centraliza), 0 na margem inferior. */
-    
-    background-color: rgba(44, 62, 80, 0.9);
+    font-weight: 700;
+    background-color:rgb(63,64,150);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.info-cop h3 {
+.info-header {
+    display: flex;
+    align-items: flex-start; /* Alinha verticalmente no centro */
+    justify-content: center; /* Centraliza o bloco todo */
+    gap: 15px; /* Espaço entre a imagem e o texto */
+    margin-bottom: 20px;
+}
+
+.cms-logo {
+    /* Define um tamanho razoável para a imagem */
+    height: 40px; 
+    width: auto;
+    /* Adiciona um fundo branco para a logo, que é SVG (transparente) */
+    background-color:rgba(255, 255, 255, 0.8);; 
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.info-cop strong {
+    color: #ffffff;
+}
+
+.info-section h3 {
     font-size: clamp(1.2rem, 3vw, 1.8rem);
-    color: #1abc9c;
+    color:rgb(255, 255, 255);
     margin-top: 0;
 }
 
-.info-cop p {
+.info-section p {
     font-size: clamp(0.9rem, 2vw, 1rem);
     line-height: 1.6;
     margin-bottom: 15px;
     text-align: justify;
     padding: 0 10px;
-}
-
-.info-cop strong {
-    color: #f9f9f9;
+    color:rgb(255, 255, 255);
+    font-weight: 500;
 }
 
 .info-cop .links-cop {
@@ -308,15 +371,22 @@ button {
 }
 
 .info-cop .links-cop a {
-    color: #1abc9c;
+    color: rgb(11, 170, 250);
     text-decoration: none;
     font-weight: bold;
 }
 
 .about-button {
-    /* Reutiliza o estilo do botão de reiniciar para consistência */
-    margin-top: 20px;
+    /* MUDANÇA: Define a cor do fundo do botão para o azul claro */
+    background: rgb(93,183,228); 
+    color: #fff; /* Mantém a cor do texto branca */
+    font-weight: bold;
+    /* Adiciona uma sombra para destacar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    /* Garante a margem definida anteriormente */
+    margin-top: 20px; 
 }
+
 
 /* --- ESTILOS DO MODAL --- */
 .modal {
@@ -426,7 +496,7 @@ footer {
     gap: clamp(20px, 4vw, 50px);
     flex-wrap: wrap;
     /* Cor de fundo neutra e harmonizada */
-    background: #2c3e50;
+    background:rgb(63,64,150);
 }
 
 .footer-item {
@@ -485,6 +555,7 @@ footer {
 /* --- CÓDIGO DE RESPONSIVIDADE (MUDANÇAS ESTRUTURAIS) --- */
 @media (max-width: 900px) {
   .game-board {
+    max-width: 600px;
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -516,6 +587,7 @@ footer {
   /* 2. O RESTO DOS AJUSTES PARA CELULAR CONTINUA IGUAL */
   .game-board {
     grid-template-columns: repeat(2, 1fr);
+    max-width: none
   }
 
   footer {
@@ -523,4 +595,57 @@ footer {
     gap: 20px;
     text-align: center;
   }
+}
+
+/* Ajuste para telas muito pequenas (abaixo de 425px) */
+@media (max-width: 425px) {
+    
+    /* 1. Reduz o tamanho da imagem do animal no verso da carta */
+    .card-info-header img {
+        width: 60px; /* Reduz de 80px para 60px */
+        height: 60px;
+    }
+    
+    /* 2. Reduz o preenchimento (padding) do verso da carta para liberar espaço */
+    .card.matched .card-back {
+        padding: 10px; /* Reduz o padding de 15px para 10px */
+    }
+
+    /* 3. Reduz o tamanho da fonte da descrição se necessário */
+    .card-back p {
+        font-size: 0.75rem; /* ~12px */
+    }
+}
+
+/* Otimização para telas muito pequenas (375px e abaixo) */
+@media (max-width: 375px) {
+    
+    /* 1. Reduz o tamanho da imagem do animal no verso da carta */
+    .card-info-header img {
+        width: 50px; /* Reduz para 50px */
+        height: 50px;
+    }
+    
+    /* 2. Reduz ainda mais o padding (preenchimento) no verso da carta */
+    .card.matched .card-back {
+        padding: 5px; /* Mínimo de padding */
+    }
+
+    /* 3. Reduz a fonte do nome do animal (h4) */
+    .card-info-header h4 {
+        font-size: 0.8rem; /* Fonte menor para o nome */
+        line-height: 1.1;
+    }
+
+    /* 4. Reduz a fonte da descrição para o mínimo aceitável */
+    .card-back p {
+        font-size: 0.7rem; /* Aproximadamente 11.2px */
+    }
+    
+    /* 5. Garante que o botão de áudio seja compacto */
+    .audio-btn {
+        height: 30px;
+        font-size: 0.75rem;
+        padding: 0 8px;
+    }
 }

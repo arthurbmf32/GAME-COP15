@@ -86,7 +86,7 @@ function createCard(animal) {
   card.classList.add("card");
   card.innerHTML = `
     <div class="card-inner">
-      <div class="card-front">COP-15</div>
+      <div class="card-front">COP15</div>
       <div class="card-back">
         <img src="${animal.img}" alt="${animal.name}">
         <span>${animal.name}</span>

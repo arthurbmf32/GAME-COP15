@@ -2,28 +2,31 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
   <title>Jogo da Memória</title>
 </head>
 
 <body>
 
-  <header>
-    <a href="https://www.ufms.br/" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Logo-UFMS.jpg" alt="Logo da UFMS" class="logo-corner" id="logo-left">
-    </a>
-    <div class="header-text">
-      <h1>Jogo da Memória - Aves Migratórias 🌍</h1>
-      <p>
-        Que tal aprender um pouco mais sobre algumas das aves que estão em extinção ou sob proteção internacional
-         ou estado de conservação desfavoráveis segundo a lista das espécies migratórias de animais silvestres 
-         incluídas nos <a href="https://www.gov.br/mma/pt-br/assuntos/biodiversidade-e-biomas/biodiversidade1/anexo-portaria-especies-migratorias_3a-edicao2025_v250120.pdf/view" target="_blank">Anexos I e II</a> da Convenção sobre a Conservação das Espécies Migratórias de Animais Silvestres?
-      </p>
+ <header>
+    <div class="header-content">
+       <a href="https://www.ufms.br/" target="_blank">
+        <img src="https://i.postimg.cc/DzyC4ZH2/loog-ufms.png" alt="Logo da UFMS" class="logo-corner" id="logo-left">
+      </a>
+      <div class="header-text">
+        <h1>Jogo da Memória - Aves Migratórias</h1>
+        <p>
+          Que tal aprender um pouco mais sobre algumas das aves que estão em extinção ou sob proteção internacional
+          ou estado de conservação desfavoráveis segundo a lista das espécies migratórias de animais silvestres 
+          incluídas nos <a href="https://www.gov.br/mma/pt-br/assuntos/biodiversidade-e-biomas/biodiversidade1/anexo-portaria-especies-migratorias_3a-edicao250120.pdf/view" target="_blank">Anexos I e II</a> da Convenção sobre a Conservação das Espécies Migratórias de Animais Silvestres?
+        </p>
+      </div>
+      <a href="https://www.cms.int/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Convention_on_Migratory_Species_Logo.svg/860px-Convention_on_Migratory_Species_Logo.svg.png" alt="Logo da Convenção sobre Espécies Migratórias" class="logo-corner" id="logo-right">
+      </a>
     </div>
-    <a href="https://www.cms.int/" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Convention_on_Migratory_Species_Logo.svg/860px-Convention_on_Migratory_Species_Logo.svg.png" alt="Logo da Convenção sobre Espécies Migratórias" class="logo-corner" id="logo-right">
-    </a>
   </header>
 
   <main>
@@ -36,15 +39,22 @@
  </main>
 
   <section class="info-section">
+    <div class="info-header">
+        <h3>O que é a COP15?</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Convention_on_Migratory_Species_Logo.svg/860px-Convention_on_Migratory_Species_Logo.svg.png" 
+             alt="Logo da Convenção sobre Espécies Migratórias (CMS)" 
+             class="cms-logo">
+    </div>
+  
     <div class="info-cop">
-        <h3>O que é a COP-15?</h3>
         <p>
             É a 15ª Reunião da Conferência das Partes. A COP, do inglês <em>Conference of the Parties</em>, 
-            consiste de um conjunto de 133 países responsáveis pela organização da Convenção sobre a 
-            Conservação de Espécies Migratórias de Animais Silvestres (CMS). Nesta convenção são 
-            discutidos e firmados importantes tratados internacionais para a proteção de animais que migram
-            regularmente entre diferentes áreas, com o objetivo de garantir a sua sobrevivência e o 
-            equilíbrio dos ecossistemas em que vivem.
+            consiste de um conjunto de 133 países responsáveis pela organização da 
+            Convenção sobre a Conservação de Espécies Migratórias de Animais Silvestres (CMS). 
+            Nesta convenção são discutidos e firmados importantes tratados internacionais para a 
+            proteção de animais que migram regularmente entre diferentes áreas,
+             com o objetivo de garantir a sua sobrevivência e o equilíbrio dos ecossistemas em
+              que vivem.
         </p>
         <p class="links-cop">
             Sabia mais acessando os links: 
@@ -52,25 +62,25 @@
             <a href="https://cop15.ufms.br" target="_blank">cop15.ufms.br</a>
         </p>
     </div>
-    <button id="openModalBtn" class="about-button">ℹ️ Sobre o Projeto</button>
-</section>
+    <button id="openModalBtn" class="about-button">ℹ️ Sobre o site</button>
+  </section>
 
-<div id="aboutModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Sobre o Desenvolvimento</h2>
-        <p>
-            Esta página foi desenvolvida como um projeto em uma disciplina de graduação dos cursos da 
-            Faculdade de Computação da UFMS, pelos acadêmicos Arthur Bastos de Mattos Ferreira Harry Borges e Lucas Vinicius
-            sob orientação da professora Luciana Montera.
-        </p>
-    </div>
-</div>
+  <div id="aboutModal" class="modal">
+      <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h2>Sobre o site</h2>
+          <p>
+              Esta página foi desenvolvida como projeto de disciplina dos cursos de graduação da 
+              Faculdade de Computação da UFMS em 2025. Os acadêmicos responsáveis: Arthur Bastos de Mattos Ferreira Harry Borges e Lucas Vinicius, 
+              sob orientação da professora Luciana Montera.
+          </p>
+      </div>
+  </div>
   
   <footer>
     <div class="footer-item" id="footer-left">
       <a href="https://www.ufms.br/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Logo-UFMS.jpg" alt="Logo da UFMS" class="logo-footer">
+        <img src="https://i.postimg.cc/DzyC4ZH2/loog-ufms.png" alt="Logo da UFMS" class="logo-footer">
       </a>
       <span>Universidade Federal de Mato Grosso do Sul</span>
     </div>
