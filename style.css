@@ -327,21 +327,40 @@ main button:hover {
 }
 
 .info-header {
-    display: flex;
-    align-items: flex-start; /* Alinha verticalmente no centro */
-    justify-content: center; /* Centraliza o bloco todo */
-    gap: 15px; /* Espaço entre a imagem e o texto */
     margin-bottom: 20px;
 }
 
 .cms-logo {
-    /* Define um tamanho razoável para a imagem */
-    height: 40px; 
-    width: auto;
-    /* Adiciona um fundo branco para a logo, que é SVG (transparente) */
-    background-color:rgba(255, 255, 255, 0.8);; 
-    padding: 5px;
-    border-radius: 5px;
+    /* Ajustado para ser a 'coluna' da imagem */
+    width: 28%; /* Um tamanho maior para a coluna */
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+    flex-shrink: 0; /* Impede que a logo encolha */
+}
+
+/* --- NOVAS REGRAS PARA O LAYOUT DA INFO-SECTION --- */
+
+.info-content-wrapper {
+  display: flex;
+  align-items: center; /* Alinha a imagem e o texto verticalmente */
+  gap: 25px; /* Espaço entre a imagem e o bloco de texto */
+}
+
+.info-text-content {
+  flex-grow: 1; /* Faz o bloco de texto ocupar o espaço restante */
+  text-align: left; /* Alinha o h3 e o botão à esquerda */
+}
+
+/* Garante que os parágrafos fiquem justificados */
+.info-text-content .info-cop p {
+  text-align: justify;
+}
+
+/* Garante que os links fiquem centralizados */
+.info-cop .links-cop {
+    text-align: center;
 }
 
 .info-cop strong {
@@ -414,6 +433,36 @@ main button:hover {
     position: relative;
     animation-name: animatetop;
     animation-duration: 0.4s;
+}
+
+/* --- ESTILO DO LINK NO TEXTO DO MODAL 'SOBRE' --- */
+
+.modal-content p a {
+    color: #5331eb; /* Mesma cor do texto do modal (branco/cinza claro) */
+    text-decoration: none; /* Mantém o sublinhado para indicar que é um link */
+    font-weight: bold; /* Dá um leve destaque */
+}
+
+/* Opcional: faz o sublinhado desaparecer ao passar o mouse */
+.modal-content p a:hover {
+    text-decoration: none;
+}
+
+/* --- ESTILO DOS LOGOS NO MODAL 'SOBRE' --- */
+
+.modal-logos {
+  display: flex;
+  justify-content: center; /* Centraliza os logos horizontalmente */
+  align-items: center;     /* Alinha os logos verticalmente */
+  gap: 25px;               /* Espaço entre os logos */
+  margin-top: 20px;        /* Espaço acima dos logos */
+}
+
+.modal-logos img {
+  height: 60px; /* Define uma altura padrão para os logos */
+  width: auto;  /* Mantém a proporção da imagem */
+  /* O logo da FACOM tem um fundo branco, vamos clarear o da UFMS para combinar */
+  filter: brightness(1.5); 
 }
 
 /* Animação de entrada do modal */
@@ -560,7 +609,29 @@ footer {
   }
 }
 
-/* Substitua a media query para celulares por esta versão */
+
+/* Em telas menores (ex: tablets e celulares), empilha a imagem e o texto */
+@media (max-width: 700px) {
+  .info-content-wrapper {
+    flex-direction: column; /* Empilha a imagem e o texto */
+    align-items: center; /* Centraliza no modo coluna */
+  }
+
+  .info-text-content {
+     width: 100%; /* Ocupa a largura total */
+     text-align: center; /* Centraliza o H3 e o botão no modo coluna */
+  }
+
+  /* Mantém os parágrafos justificados */
+  .info-text-content .info-cop p {
+    text-align: justify;
+  }
+
+  .cms-logo {
+    width: 100px; /* Pode diminuir um pouco no modo 'pilha' */
+    margin-bottom: 15px;
+  }
+}
 
 /* Para Celulares (até 600px de largura) */
 @media (max-width: 600px) {

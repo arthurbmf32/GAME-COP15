@@ -37,44 +37,56 @@
     <div class="game-board" id="gameBoard"></div> 
     <button onclick="restartGame()">🔄 Reiniciar Jogo</button> 
  </main>
-
+ 
   <section class="info-section">
-    <div class="info-header">
-        <h3>O que é a COP15?</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Convention_on_Migratory_Species_Logo.svg/860px-Convention_on_Migratory_Species_Logo.svg.png" 
-             alt="Logo da Convenção sobre Espécies Migratórias (CMS)" 
-             class="cms-logo">
-    </div>
-  
-    <div class="info-cop">
-        <p>
-            É a 15ª Reunião da Conferência das Partes. A COP, do inglês <em>Conference of the Parties</em>, 
-            consiste de um conjunto de 133 países responsáveis pela organização da 
-            Convenção sobre a Conservação de Espécies Migratórias de Animais Silvestres (CMS). 
-            Nesta convenção são discutidos e firmados importantes tratados internacionais para a 
-            proteção de animais que migram regularmente entre diferentes áreas,
-             com o objetivo de garantir a sua sobrevivência e o equilíbrio dos ecossistemas em
-              que vivem.
-        </p>
-        <p class="links-cop">
-            Sabia mais acessando os links: 
-            <a href="https://www.cms.int/cop15docs" target="_blank">cms.int/cop15docs</a> e 
-            <a href="https://cop15.ufms.br" target="_blank">cop15.ufms.br</a>
-        </p>
-    </div>
-    <button id="openModalBtn" class="about-button">ℹ️ Sobre o site</button>
+    <div class="info-content-wrapper">
+
+      <div class="info-text-content">
+        <div class="info-header">
+            <h3>O que é a COP15?</h3>
+        </div>
+        <div class="info-cop">
+            <p>
+                É a 15ª Reunião da Conferência das Partes. A COP, do inglês <em>Conference of the Parties</em>, 
+                consiste de um conjunto de 133 países responsáveis pela organização da 
+                Convenção sobre a Conservação de Espécies Migratórias de Animais Silvestres (CMS). 
+                Nesta convenção são discutidos e firmados importantes tratados internacionais para a 
+                proteção de animais que migram regularmente entre diferentes áreas,
+                com o objetivo de garantir a sua sobrevivência e o equilíbrio dos ecossistemas em
+                  que vivem.
+            </p>
+            <p class="links-cop">
+                Sabia mais acessando os links: 
+                <a href="https://www.cms.int/cop15docs" target="_blank">cms.int/cop15docs</a> e 
+                <a href="https://cop15.ufms.br" target="_blank">cop15.ufms.br</a>
+            </p>
+        </div>
+        <button id="openModalBtn" class="about-button">ℹ️ Sobre o site</button>
+      </div> <img src="https://www.cms.int/sites/default/files/meetings/COP15%20emblema%20completo%20Hor%20Eng.png" 
+          alt="Emblema oficial da COP15" 
+          class="cms-logo">
+
+    </div> 
   </section>
+  
 
   <div id="aboutModal" class="modal">
-      <div class="modal-content">
-          <span class="close-btn">&times;</span>
-          <h2>Sobre o site</h2>
-          <p>
-              Esta página foi desenvolvida como projeto de disciplina dos cursos de graduação da 
-              Faculdade de Computação da UFMS em 2025. Os acadêmicos responsáveis: Arthur Bastos de Mattos Ferreira Harry Borges e Lucas Vinicius, 
-              sob orientação da professora Luciana Montera.
-          </p>
-      </div>
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Sobre o site</h2>
+        <p>
+          Esta página foi desenvolvida como projeto de disciplina dos cursos de graduação da 
+          <a href="https://www.facom.ufms.br/" target="_blank">Faculdade de Computação da UFMS</a> em 2025.
+        </p>
+        <p>Os acadêmicos responsáveis: Arthur Bastos de Mattos Ferreira Harry Borges e Lucas Vinicius, 
+          sob orientação da professora Luciana Montera.</p>
+        
+        <div class="modal-logos">
+            <img src="https://i.postimg.cc/DzyC4ZH2/loog-ufms.png" alt="Logo da UFMS">
+            <img src="https://www.facom.ufms.br/wp-content/uploads/2017/09/grafo_facom.png" alt="Logo da FACOM">
+        </div>
+
+    </div>
   </div>
   
   <footer>
